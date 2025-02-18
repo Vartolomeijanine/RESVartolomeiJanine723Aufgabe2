@@ -30,6 +30,10 @@ public class View {
             // Helper „Buy” method
             System.out.println("9. Buy Product");
 
+            // First filter
+            System.out.println("10. Filter Characters by Dorf");
+
+
 
 
             int choice = scanner.nextInt();
@@ -46,6 +50,8 @@ public class View {
                 case 7 -> updateCharacter();
                 case 8 -> deleteCharacter();
                 case 9 -> buyProducts();
+
+                case 10 -> filterCharactersByDorf();
 
 
 
@@ -160,6 +166,15 @@ public class View {
         System.out.println("Enter the product Name");
         String productName = scanner.nextLine();
         controller.buyProducts(characterID, productName);
+    }
+
+    /**
+     * Filter character by their dorf (user input).
+     */
+    private void filterCharactersByDorf() {
+        System.out.println("Enter the character dorf");
+        String dorf = scanner.nextLine();
+        controller.filterCharactersByDorf(dorf).forEach(System.out::println);
     }
 
 

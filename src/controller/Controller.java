@@ -127,6 +127,23 @@ public class Controller {
         }
     }
 
+    // Filter: characters by dorf
+
+    /**
+     * Filter characters by dorf (user input from view).
+     * @param dorf
+     * @return
+     */
+    public List<Character> filterCharactersByDorf(String dorf) {
+        List<Character> filteredList = new ArrayList<>();
+        for (Character character : characterList) {
+            if (character.getDorf().equals(dorf)) {
+                filteredList.add(character);
+            }
+        }
+        return filteredList;
+    }
+
 
 
     
