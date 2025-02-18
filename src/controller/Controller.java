@@ -163,6 +163,29 @@ public class Controller {
         return filteredCharacters;
     }
 
+    // Sort: character's products in ascending/descending order
+
+    /**
+     * Sorts a character's products in ascending/descending order.
+     * @param characterID
+     * @param ascending
+     * @return
+     */
+    public List<Product> sortCharactersProducts(int characterID, boolean ascending) {
+        for (Character character : characterList) {
+            if (character.getId() == characterID) {
+                List<Product> sortedProducts = new ArrayList<>(character.getProducts());
+                if (ascending) {
+                    sortedProducts.sort(Comparator.comparing(Product::getPrice));
+                } else {
+                    sortedProducts.sort(Comparator.comparing(Product::getPrice).reversed());
+                }
+                return sortedProducts;
+            }
+        }
+        return new ArrayList<>();
+    }
+
 
 
     

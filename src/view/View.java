@@ -36,6 +36,9 @@ public class View {
             // Second filter
             System.out.println("11. Filter Characters by product's region");
 
+            // Sort
+            System.out.println("12. Sort Products in ascending/descending order");
+
 
 
 
@@ -57,6 +60,7 @@ public class View {
 
                 case 10 -> filterCharactersByDorf();
                 case 11 -> filterCharacterByProductRegion();
+                case 12 -> sortCharactersProducts();
 
 
 
@@ -189,6 +193,19 @@ public class View {
         System.out.println("Enter the product region");
         String region = scanner.nextLine();
         controller.filterCharacterByProductRegion(region).forEach(System.out::println);
+    }
+
+    /**
+     * Sorts characters' products in ascending/descending order.
+     */
+    private void sortCharactersProducts() {
+        controller.getCharacterList().forEach(System.out::println);
+        System.out.println("Enter the character ID");
+        int characterID = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Sort ascending? (true/false)");
+        boolean ascending = scanner.nextBoolean();
+        controller.sortCharactersProducts(characterID, ascending).forEach(System.out::println);
     }
 
 
