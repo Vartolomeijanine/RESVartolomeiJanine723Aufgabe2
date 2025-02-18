@@ -62,6 +62,71 @@ public class Controller {
         return null;
     }
 
+    // CRUD Character
+
+    /**
+     * Adds character to the InMemory repository.
+     * @param character
+     */
+    public void addCharacter(Character character) {
+        for( Character characterFromList : characterList) {
+            if(characterFromList.getId() == character.getId()) {
+                throw new IllegalArgumentException("Character already exists");
+            }
+        }
+        characterList.add(character);
+    }
+
+    /**
+     * Gets all characters from the InMemory repository.
+     * @return
+     */
+    public List<Character> getCharacterList() {
+        return characterList;
+    }
+
+    /**
+     * Updates characters from the InMemory repository.
+     * @param id
+     * @param newName
+     * @param newDorf
+     */
+    public void updateCharacter(int id, String newName, String newDorf) {
+        for (model.Character character : characterList) {
+            if (character.getId() == id) {
+                character.setName(newName);
+                character.setDorf(newDorf);
+            }
+        }
+    }
+
+    /**
+     * Deletes characters from the InMemory repository.
+     * @param id
+     */
+    public void deleteCharacter(int id) {
+        characterList.removeIf(character -> character.getId() == id);
+    }
+
+    // Helper method: buy
+
+    /**
+     * Helper method in order for characters to buy products.
+     * @param characterID
+     * @param productName
+     */
+    public void buyProducts(int characterID, String productName) {
+        for (Character character : characterList) {
+            if (character.getId() == characterID) {
+                for (Product product : productList) {
+                    if (product.getName().equalsIgnoreCase(productName)) {
+                        character.getProducts().add(product);
+                    }
+                }
+            }
+        }
+    }
+
 
 
     
