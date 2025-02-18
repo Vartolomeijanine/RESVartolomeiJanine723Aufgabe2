@@ -144,6 +144,25 @@ public class Controller {
         return filteredList;
     }
 
+    // Filter: characters by product's region
+
+    /**
+     * Filters characters that have bought products for a specific region (user input from view).
+     * @param region
+     * @return
+     */
+    public List<Character> filterCharacterByProductRegion(String region) {
+        List<Character> filteredCharacters = new ArrayList<>();
+        for (Character character : characterList) {
+            for (Product product : character.getProducts()) {
+                if (product.getRegion().equals(region)) {
+                    filteredCharacters.add(character);
+                }
+            }
+        }
+        return filteredCharacters;
+    }
+
 
 
     

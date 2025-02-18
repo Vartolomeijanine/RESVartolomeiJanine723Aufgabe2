@@ -33,6 +33,10 @@ public class View {
             // First filter
             System.out.println("10. Filter Characters by Dorf");
 
+            // Second filter
+            System.out.println("11. Filter Characters by product's region");
+
+
 
 
 
@@ -52,6 +56,7 @@ public class View {
                 case 9 -> buyProducts();
 
                 case 10 -> filterCharactersByDorf();
+                case 11 -> filterCharacterByProductRegion();
 
 
 
@@ -175,6 +180,15 @@ public class View {
         System.out.println("Enter the character dorf");
         String dorf = scanner.nextLine();
         controller.filterCharactersByDorf(dorf).forEach(System.out::println);
+    }
+
+    /**
+     * Filter characters that have bought products from a specific region.
+     */
+    private void filterCharacterByProductRegion() {
+        System.out.println("Enter the product region");
+        String region = scanner.nextLine();
+        controller.filterCharacterByProductRegion(region).forEach(System.out::println);
     }
 
 
